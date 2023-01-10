@@ -1,18 +1,18 @@
-# A Fork version for Chinese users / 国内Github加速
+# LunarVim: A Fork version for me / 个人偏好配置
 
 ## Installation
 
 1. For Linux / Mac users:
 
-  ```
-  bash <(curl -s https://ghproxy.com/https://raw.githubusercontent.com/ysl2/LunarVim/master/utils/installer/install.sh)
-  ```
+    ```
+    bash <(curl -s https://ghproxy.com/https://raw.githubusercontent.com/ysl2/LunarVim/master/utils/installer/install.sh)
+    ```
 
 2. For Windows users (require Powershell 7+):
 
-  ```
-  Invoke-WebRequest https://ghproxy.com/https://raw.githubusercontent.com/ysl2/LunarVim/master/utils/installer/install.ps1 -UseBasicParsing | Invoke-Expression
-  ```
+    ```
+    Invoke-WebRequest https://ghproxy.com/https://raw.githubusercontent.com/ysl2/LunarVim/master/utils/installer/install.ps1 -UseBasicParsing | Invoke-Expression
+    ```
 
 ---
 
