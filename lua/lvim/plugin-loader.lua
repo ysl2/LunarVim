@@ -28,6 +28,7 @@ function plugin_loader.init(opts)
     max_jobs = max_jobs,
     log = { level = "warn" },
     git = {
+      default_url_format = 'git@git.zhlh6.cn:%s',
       clone_timeout = 120,
     },
     display = {
@@ -45,7 +46,7 @@ function plugin_loader.init(opts)
   if not utils.is_directory(install_path) then
     print "Initializing first time setup"
     print "Installing packer"
-    print(vim.fn.system { "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path })
+    print(vim.fn.system { "git", "clone", "--depth", "1", "git@git.zhlh6.cn:wbthomason/packer.nvim", install_path })
     vim.cmd "packadd packer.nvim"
   end
 

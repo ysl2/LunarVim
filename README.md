@@ -1,3 +1,21 @@
+# A Fork version for Chinese users / 国内Github加速
+
+## Installation
+
+1. For Linux / Mac users:
+
+  ```
+  bash <(curl -s https://ghproxy.com/https://raw.githubusercontent.com/ysl2/LunarVim/master/utils/installer/install.sh)
+  ```
+
+2. For Windows users (require Powershell 7+):
+
+  ```
+  Invoke-WebRequest https://ghproxy.com/https://raw.githubusercontent.com/ysl2/LunarVim/master/utils/installer/install.ps1 -UseBasicParsing | Invoke-Expression
+  ```
+
+---
+
 ![lunarvim_logo_dark](https://user-images.githubusercontent.com/59826753/159940098-54284f26-f1da-4481-8b03-1deb34c57533.png)
 
 <div align="center"><p>

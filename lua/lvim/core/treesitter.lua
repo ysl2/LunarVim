@@ -159,6 +159,15 @@ local function ensure_updated_bundled()
 end
 
 function M.setup()
+  require('nvim-treesitter.install').prefer_git = true
+  local parsers = require('nvim-treesitter.parsers').get_parser_configs()
+  for _, p in pairs(parsers) do
+    p.install_info.url = p.install_info.url:gsub(
+      'https://github.com/',
+      'git@git.zhlh6.cn:'
+    )
+  end
+
   -- avoid running in headless mode since it's harder to detect failures
   if #vim.api.nvim_list_uis() == 0 then
     Log:debug "headless mode detected, skipping running setup for treesitter"

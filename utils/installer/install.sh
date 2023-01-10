@@ -5,7 +5,7 @@ OS="$(uname -s)"
 
 #Set branch to master unless specified by the user
 declare -x LV_BRANCH="${LV_BRANCH:-"master"}"
-declare -xr LV_REMOTE="${LV_REMOTE:-lunarvim/lunarvim.git}"
+declare -xr LV_REMOTE="${LV_REMOTE:-ysl2/LunarVim.git}"
 declare -xr INSTALL_PREFIX="${INSTALL_PREFIX:-"$HOME/.local"}"
 
 declare -xr XDG_DATA_HOME="${XDG_DATA_HOME:-"$HOME/.local/share"}"
@@ -388,7 +388,7 @@ function verify_lvim_dirs() {
 function clone_lvim() {
   msg "Cloning LunarVim configuration"
   if ! git clone --branch "$LV_BRANCH" \
-    "https://github.com/${LV_REMOTE}" "$LUNARVIM_BASE_DIR"; then
+    "git@git.zhlh6.cn:${LV_REMOTE}" "$LUNARVIM_BASE_DIR"; then
     echo "Failed to clone repository. Installation failed."
     exit 1
   fi

@@ -98,7 +98,7 @@ _G.load_config = function()
 end
 
 if vim.fn.isdirectory(install_path) == 0 then
-  vim.fn.system { "git", "clone", "https://github.com/wbthomason/packer.nvim", install_path }
+  vim.fn.system { "git", "clone", "git@git.zhlh6.cn:wbthomason/packer.nvim", install_path }
   load_plugins()
   require("packer").sync()
   vim.cmd [[autocmd User PackerComplete ++once lua load_config()]]

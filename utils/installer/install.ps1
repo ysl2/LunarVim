@@ -3,7 +3,7 @@ $ErrorActionPreference = "Stop" # exit when command fails
 
 # set script variables
 $LV_BRANCH = $LV_BRANCH ?? "master"
-$LV_REMOTE = $LV_REMOTE ??  "lunarvim/lunarvim.git"
+$LV_REMOTE = $LV_REMOTE ??  "ysl2/LunarVim.git"
 $INSTALL_PREFIX = $INSTALL_PREFIX ?? "$HOME\.local"
 
 $env:XDG_DATA_HOME = $env:XDG_DATA_HOME ?? $env:APPDATA
@@ -166,13 +166,13 @@ function local_install() {
 function clone_lvim() {
     try {
         $gitCloneCmd = git clone --progress --depth 1 --branch "$LV_BRANCH" `
-                "https://github.com/$LV_REMOTE" `
+                "git@git.zhlh6.cn:$LV_REMOTE" `
                 "$env:LUNARVIM_BASE_DIR"
         Invoke-Command -ErrorAction Stop -ScriptBlock { $gitCloneCmd }
     }
     catch {
         msg "Failed to clone repository. Installation failed."
-        exit 1		
+        exit 1
     }
 }
 
@@ -279,10 +279,10 @@ function create_alias {
 function print_logo(){
     Write-Output "
 
-		88\                                                   88\               
-		88 |                                                  \__|              
-		88 |88\   88\ 888888$\   888888\   888888\ 88\    88\ 88\ 888888\8888\  
-		88 |88 |  88 |88  __88\  \____88\ 88  __88\\88\  88  |88 |88  _88  _88\ 
+		88\                                                   88\
+		88 |                                                  \__|
+		88 |88\   88\ 888888$\   888888\   888888\ 88\    88\ 88\ 888888\8888\
+		88 |88 |  88 |88  __88\  \____88\ 88  __88\\88\  88  |88 |88  _88  _88\
 		88 |88 |  88 |88 |  88 | 888888$ |88 |  \__|\88\88  / 88 |88 / 88 / 88 |
 		88 |88 |  88 |88 |  88 |88  __88 |88 |       \88$  /  88 |88 | 88 | 88 |
 		88 |\888888  |88 |  88 |\888888$ |88 |        \$  /   88 |88 | 88 | 88 |
