@@ -33,6 +33,12 @@ local core_plugins = {
     end,
     disable = not lvim.builtin.telescope.active,
   },
+  {
+    "nvim-telescope/telescope-fzf-native.nvim",
+    requires = { "nvim-telescope/telescope.nvim" },
+    run = "make",
+    disable = not lvim.builtin.telescope.active,
+  },
   -- Install nvim-cmp, and buffer source as a dependency
   {
     "hrsh7th/nvim-cmp",
@@ -286,16 +292,6 @@ local core_plugins = {
     disable = not lvim.builtin.bigfile.active,
   },
 }
-if not (vim.fn.has('Win32')) then
-  table.insert(core_plugins,
-    {
-      "nvim-telescope/telescope-fzf-native.nvim",
-      requires = { "nvim-telescope/telescope.nvim" },
-      run = "make",
-      disable = not lvim.builtin.telescope.active,
-    }
-  )
-end
 
 local default_snapshot_path = join_paths(get_lvim_base_dir(), "snapshots", "default.json")
 local content = vim.fn.readfile(default_snapshot_path)
