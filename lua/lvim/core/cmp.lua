@@ -70,7 +70,7 @@ local function jumpable(dir)
       local n_next = node.next
       local next_pos = n_next and n_next.mark:pos_begin()
       local candidate = n_next ~= snippet and next_pos and (pos[1] < next_pos[1])
-        or (pos[1] == next_pos[1] and pos[2] < next_pos[2])
+          or (pos[1] == next_pos[1] and pos[2] < next_pos[2])
 
       -- Past unmarked exit node, exit early
       if n_next == nil or n_next == snippet.next then
@@ -144,6 +144,7 @@ M.config = function()
     completion = {
       ---@usage The minimum length of a word to complete on.
       keyword_length = 1,
+      completeopt = 'menu,menuone,noinsert'
     },
     experimental = {
       ghost_text = false,
@@ -208,7 +209,7 @@ M.config = function()
         end
         vim_item.menu = lvim.builtin.cmp.formatting.source_names[entry.source.name]
         vim_item.dup = lvim.builtin.cmp.formatting.duplicates[entry.source.name]
-          or lvim.builtin.cmp.formatting.duplicates_default
+            or lvim.builtin.cmp.formatting.duplicates_default
         return vim_item
       end,
     },
@@ -356,6 +357,15 @@ M.config = function()
   }
 end
 
+function Leave_snippet()
+  if ((vim.v.event.old_mode == 's' and vim.v.event.new_mode == 'n') or vim.v.event.old_mode == 'i')
+      and require('luasnip').session.current_nodes[vim.api.nvim_get_current_buf()]
+      and not require('luasnip').session.jump_active
+  then
+    require('luasnip').unlink_current()
+  end
+end
+
 function M.setup()
   local cmp = require "cmp"
   cmp.setup(lvim.builtin.cmp)
@@ -372,6 +382,11 @@ function M.setup()
   if lvim.builtin.cmp.on_config_done then
     lvim.builtin.cmp.on_config_done(cmp)
   end
+
+  -- stop snippets when you leave to normal mode
+  vim.api.nvim_command([[
+      autocmd ModeChanged * lua Leave_snippet()
+  ]])
 end
 
 return M
