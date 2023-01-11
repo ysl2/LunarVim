@@ -377,6 +377,10 @@ function M.setup()
   -- stop snippets when you leave to normal mode
   vim.api.nvim_create_autocmd('ModeChanged', {
     callback = function()
+      local luasnip_ok, luasnip = pcall(require, 'luasnip')
+      if not luasnip_ok then
+        return
+      end
       if ((vim.v.event.old_mode == 's' and vim.v.event.new_mode == 'n') or vim.v.event.old_mode == 'i')
           and luasnip.session.current_nodes[vim.api.nvim_get_current_buf()]
           and not luasnip.session.jump_active
