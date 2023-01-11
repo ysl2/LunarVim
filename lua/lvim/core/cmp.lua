@@ -357,15 +357,6 @@ M.config = function()
   }
 end
 
-function Leave_snippet()
-  if ((vim.v.event.old_mode == 's' and vim.v.event.new_mode == 'n') or vim.v.event.old_mode == 'i')
-      and require('luasnip').session.current_nodes[vim.api.nvim_get_current_buf()]
-      and not require('luasnip').session.jump_active
-  then
-    require('luasnip').unlink_current()
-  end
-end
-
 function M.setup()
   local cmp = require "cmp"
   cmp.setup(lvim.builtin.cmp)
@@ -384,9 +375,16 @@ function M.setup()
   end
 
   -- stop snippets when you leave to normal mode
-  vim.api.nvim_command([[
-      autocmd ModeChanged * lua Leave_snippet()
-  ]])
+  vim.api.nvim_create_autocmd('ModeChanged', {
+    callback = function()
+      if ((vim.v.event.old_mode == 's' and vim.v.event.new_mode == 'n') or vim.v.event.old_mode == 'i')
+          and luasnip.session.current_nodes[vim.api.nvim_get_current_buf()]
+          and not luasnip.session.jump_active
+      then
+        luasnip.unlink_current()
+      end
+    end
+  })
 end
 
 return M
