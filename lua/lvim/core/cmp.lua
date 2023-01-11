@@ -70,7 +70,7 @@ local function jumpable(dir)
       local n_next = node.next
       local next_pos = n_next and n_next.mark:pos_begin()
       local candidate = n_next ~= snippet and next_pos and (pos[1] < next_pos[1])
-          or (pos[1] == next_pos[1] and pos[2] < next_pos[2])
+        or (pos[1] == next_pos[1] and pos[2] < next_pos[2])
 
       -- Past unmarked exit node, exit early
       if n_next == nil or n_next == snippet.next then
@@ -209,7 +209,7 @@ M.config = function()
         end
         vim_item.menu = lvim.builtin.cmp.formatting.source_names[entry.source.name]
         vim_item.dup = lvim.builtin.cmp.formatting.duplicates[entry.source.name]
-            or lvim.builtin.cmp.formatting.duplicates_default
+          or lvim.builtin.cmp.formatting.duplicates_default
         return vim_item
       end,
     },
