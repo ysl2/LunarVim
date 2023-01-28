@@ -11,6 +11,9 @@
 2. For Windows users (require Powershell 7+):
 
     ```
+    # Optional set policy temp in the current pwsh session.
+    # Need to reset this next time opening a new pwsh.
+    Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
     Invoke-WebRequest https://ghproxy.com/https://raw.githubusercontent.com/ysl2/LunarVim/master/utils/installer/install.ps1 -UseBasicParsing | Invoke-Expression
     ```
 
