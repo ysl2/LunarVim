@@ -148,7 +148,7 @@ end
 function plugin_loader.sync_core_plugins()
   local core_plugins = plugin_loader.get_core_plugins()
   Log:trace(string.format("Syncing core plugins: [%q]", table.concat(core_plugins, ", ")))
-  require("lazy").sync { wait = true, plugins = core_plugins }
+  require("lazy").update { wait = true, plugins = core_plugins }
 end
 
 function plugin_loader.ensure_plugins()

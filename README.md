@@ -1,4 +1,4 @@
-# LunarVim: A Fork version for me / 个人偏好配置
+# LunarVim: A Fork version for me
 
 ## Installation
 

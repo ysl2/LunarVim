@@ -52,12 +52,18 @@ local core_plugins = {
       "cmp_luasnip",
       "cmp-buffer",
       "cmp-path",
+      "cmp-cmdline",
     },
   },
   { "hrsh7th/cmp-nvim-lsp", lazy = true },
   { "saadparwaiz1/cmp_luasnip", lazy = true },
   { "hrsh7th/cmp-buffer", lazy = true },
   { "hrsh7th/cmp-path", lazy = true },
+  {
+    "hrsh7th/cmp-cmdline",
+    lazy = true,
+    enabled = lvim.builtin.cmp and lvim.builtin.cmp.cmdline.enable or false,
+  },
   {
     "L3MON4D3/LuaSnip",
     config = function()
@@ -102,6 +108,9 @@ local core_plugins = {
     "nvim-treesitter/nvim-treesitter",
     -- run = ":TSUpdate",
     config = function()
+      local utils = require "lvim.utils"
+      local path = utils.join_paths(get_runtime_dir(), "site", "pack", "lazy", "opt", "nvim-treesitter")
+      vim.opt.rtp:prepend(path) -- treesitter needs to be before nvim's runtime in rtp
       require("lvim.core.treesitter").setup()
     end,
   },
@@ -122,7 +131,7 @@ local core_plugins = {
   },
   -- Lir
   {
-    "LunarVim/lir.nvim",
+    "tamago324/lir.nvim",
     config = function()
       require("lvim.core.lir").setup()
     end,
@@ -168,7 +177,7 @@ local core_plugins = {
 
   -- Icons
   {
-    "kyazdani42/nvim-web-devicons",
+    "nvim-tree/nvim-web-devicons",
     enabled = lvim.use_icons,
   },
 
