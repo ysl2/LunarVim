@@ -305,6 +305,12 @@ local core_plugins = {
     config = function() require('dressing').setup {} end ,
     lazy = true
   },
+  {
+    'mbbill/undotree',
+    config = function()
+      require("lvim.core.undotree").setup()
+    end,
+  }
 }
 
 local default_snapshot_path = join_paths(get_lvim_base_dir(), "snapshots", "default.json")
