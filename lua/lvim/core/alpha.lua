@@ -14,7 +14,7 @@ function M.config()
       section = lvim_startify.get_sections(),
       opts = { autostart = true },
     },
-    active = true,
+    active = false,
     mode = "dashboard",
   }
 end

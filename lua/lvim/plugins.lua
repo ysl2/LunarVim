@@ -294,6 +294,17 @@ local core_plugins = {
     end,
     enabled = lvim.builtin.bigfile.active,
   },
+  {
+    'Shatur/neovim-session-manager',
+    dependencies = { 'nvim-lua/plenary.nvim', 'stevearc/dressing.nvim' },
+    config = function()
+      require("lvim.core.session_manager").setup()
+    end,
+  },
+  { 'stevearc/dressing.nvim',
+    config = function() require('dressing').setup {} end ,
+    lazy = true
+  },
 }
 
 local default_snapshot_path = join_paths(get_lvim_base_dir(), "snapshots", "default.json")

@@ -4,7 +4,7 @@ function M.config()
   lvim.builtin.project = {
     ---@usage set to false to disable project.nvim.
     --- This is on by default since it's currently the expected behavior.
-    active = true,
+    active = false,
 
     on_config_done = nil,
 
